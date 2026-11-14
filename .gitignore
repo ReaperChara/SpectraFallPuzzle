@@ -1,0 +1,21 @@
+# Godot
+.godot/
+*.translation
+
+# Android build
+android/build/
+*.apk
+*.aab
+build_*.log
+
+# Keystore (asla commit edilmemeli)
+keystore/
+*.keystore
+*.jks
+
+# Export credentials
+export_credentials.cfg
+
+# OS
+.DS_Store
+Thumbs.db

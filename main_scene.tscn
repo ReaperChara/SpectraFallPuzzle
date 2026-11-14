@@ -1,0 +1,694 @@
+[gd_scene load_steps=15 format=3 uid="uid://b80i0y6dhxp7l"]
+
+[ext_resource type="Script" uid="uid://unelwkqjwva3" path="res://main_scene.gd" id="1_2c62f"]
+[ext_resource type="Script" path="res://scripts/grid_manager.gd" id="2_gridmgr"]
+[ext_resource type="Script" path="res://scripts/active_piece.gd" id="3_active"]
+[ext_resource type="Script" path="res://scripts/board_view.gd" id="4_boardview"]
+[ext_resource type="Script" path="res://scripts/next_preview.gd" id="5_preview"]
+[ext_resource type="Script" path="res://scripts/spinner.gd" id="6_spinner"]
+[ext_resource type="Script" path="res://scripts/edge_glow.gd" id="7_edgeglow"]
+[ext_resource type="Script" path="res://scripts/control_icon.gd" id="8_ctlicon"]
+[ext_resource type="Script" path="res://scripts/menu_deco.gd" id="9_menudeco"]
+[ext_resource type="Script" path="res://scripts/combo_bar.gd" id="10_combo"]
+[ext_resource type="Script" path="res://scripts/chain_celebrator.gd" id="11_celebrator"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_score"]
+font_size = 22
+font_color = Color(1, 0.95, 0.8, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_level"]
+font_size = 16
+font_color = Color(0.7, 0.75, 0.9, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 42
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_subtitle"]
+font_size = 18
+font_color = Color(0.75, 0.8, 0.95, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_chain"]
+font_size = 36
+font_color = Color(1, 0.9, 0.3, 1)
+outline_size = 10
+outline_color = Color(0.05, 0.05, 0.1, 0.9)
+
+[sub_resource type="LabelSettings" id="LabelSettings_levelup"]
+font_size = 54
+font_color = Color(1, 1, 1, 1)
+outline_size = 14
+outline_color = Color(0.02, 0.02, 0.06, 0.95)
+
+[sub_resource type="LabelSettings" id="LabelSettings_levelup_sub"]
+font_size = 22
+font_color = Color(0.85, 0.9, 1, 1)
+outline_size = 8
+outline_color = Color(0.02, 0.02, 0.06, 0.95)
+
+[node name="MainScene" type="Node2D" unique_id=36392733]
+top_level = true
+script = ExtResource("1_2c62f")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1350155373]
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0.03, 0.03, 0.07, 1)
+
+[node name="GridManager" type="Node" parent="." unique_id=2000000001]
+script = ExtResource("2_gridmgr")
+
+[node name="BoardView" type="Node2D" parent="." unique_id=2000000002]
+position = Vector2(10, 105)
+script = ExtResource("4_boardview")
+
+[node name="ActivePiece" type="Node2D" parent="." unique_id=2000000003]
+script = ExtResource("3_active")
+
+[node name="EdgeGlow" type="Node2D" parent="." unique_id=2000000200]
+script = ExtResource("7_edgeglow")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2000000004]
+
+[node name="HeaderBG" type="ColorRect" parent="UI" unique_id=2000000031]
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 710.0
+offset_bottom = 105.0
+color = Color(0.06, 0.06, 0.12, 0.9)
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=2000000005]
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 320.0
+offset_bottom = 40.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_score")
+
+[node name="LevelLabel" type="Label" parent="UI" unique_id=2000000006]
+offset_left = 20.0
+offset_top = 44.0
+offset_right = 320.0
+offset_bottom = 68.0
+text = "Level: 1"
+label_settings = SubResource("LabelSettings_level")
+
+[node name="NextLabel" type="Label" parent="UI" unique_id=2000000035]
+offset_left = 20.0
+offset_top = 72.0
+offset_right = 320.0
+offset_bottom = 100.0
+text = ""
+label_settings = SubResource("LabelSettings_level")
+
+[node name="HighScoreLabel" type="Label" parent="UI" unique_id=2000000007]
+offset_left = 380.0
+offset_top = 10.0
+offset_right = 620.0
+offset_bottom = 40.0
+text = "Best: 0"
+label_settings = SubResource("LabelSettings_score")
+horizontal_alignment = 2
+
+[node name="PauseButton" type="Button" parent="UI" unique_id=2000000009]
+offset_left = 630.0
+offset_top = 10.0
+offset_right = 700.0
+offset_bottom = 50.0
+text = "II"
+theme_override_font_sizes/font_size = 18
+
+[node name="SidePanel" type="Control" parent="UI" unique_id=2000000040]
+offset_left = 400.0
+offset_top = 105.0
+offset_right = 710.0
+offset_bottom = 1045.0
+
+[node name="SidePanelBG" type="ColorRect" parent="UI/SidePanel" unique_id=2000000041]
+offset_right = 310.0
+offset_bottom = 940.0
+color = Color(0.05, 0.05, 0.1, 0.85)
+
+[node name="NextPreviewLabel" type="Label" parent="UI" unique_id=2000000042]
+offset_left = 400.0
+offset_top = 120.0
+offset_right = 710.0
+offset_bottom = 148.0
+text = "NEXT PIECE"
+label_settings = SubResource("LabelSettings_level")
+horizontal_alignment = 1
+
+[node name="NextPreview" type="Node2D" parent="UI" unique_id=2000000090]
+position = Vector2(555, 200)
+script = ExtResource("5_preview")
+
+[node name="NextPieceName" type="Label" parent="UI" unique_id=2000000008]
+offset_left = 400.0
+offset_top = 260.0
+offset_right = 710.0
+offset_bottom = 290.0
+text = ""
+label_settings = SubResource("LabelSettings_level")
+horizontal_alignment = 1
+
+[node name="SepLine" type="ColorRect" parent="UI" unique_id=2000000091]
+offset_left = 420.0
+offset_top = 310.0
+offset_right = 690.0
+offset_bottom = 312.0
+color = Color(0.25, 0.28, 0.4, 0.6)
+
+[node name="LegendTitle" type="Label" parent="UI" unique_id=2000000043]
+offset_left = 400.0
+offset_top = 325.0
+offset_right = 710.0
+offset_bottom = 353.0
+text = "HOW TO PLAY"
+label_settings = SubResource("LabelSettings_level")
+horizontal_alignment = 1
+
+[node name="LegendHint" type="Label" parent="UI" unique_id=2000000044]
+offset_left = 410.0
+offset_top = 360.0
+offset_right = 700.0
+offset_bottom = 480.0
+text = "Match 3+ same-colored
+blocks to clear them!
+Chain reactions give
+bonus points."
+label_settings = SubResource("LabelSettings_subtitle")
+horizontal_alignment = 1
+
+[node name="ControlsHint" type="Label" parent="UI" unique_id=2000000092]
+offset_left = 410.0
+offset_top = 500.0
+offset_right = 700.0
+offset_bottom = 580.0
+text = "Arrows / WASD: Move
+W / Up: Rotate
+Space: Hard Drop
+P / Esc: Pause"
+label_settings = SubResource("LabelSettings_subtitle")
+horizontal_alignment = 1
+
+[node name="ChainLabel" type="Label" parent="UI" unique_id=2000000045]
+offset_left = 350.0
+offset_top = 600.0
+offset_right = 710.0
+offset_bottom = 690.0
+text = ""
+label_settings = SubResource("LabelSettings_chain")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChainScoreLabel" type="Label" parent="UI" unique_id=2000000151]
+offset_left = 470.0
+offset_top = 648.0
+offset_right = 710.0
+offset_bottom = 692.0
+text = ""
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ComboBar" type="Control" parent="UI" unique_id=2000000150]
+offset_left = 390.0
+offset_top = 690.0
+offset_right = 670.0
+offset_bottom = 716.0
+mouse_filter = 2
+script = ExtResource("10_combo")
+
+[node name="ChainCelebrator" type="Control" parent="UI" unique_id=2000000152]
+offset_right = 720.0
+offset_bottom = 1280.0
+mouse_filter = 2
+z_index = 5
+script = ExtResource("11_celebrator")
+
+[node name="LevelUpPanel" type="Control" parent="UI" unique_id=2000000060]
+visible = false
+offset_right = 720.0
+offset_bottom = 1280.0
+mouse_filter = 2
+
+[node name="LevelUpShade" type="ColorRect" parent="UI/LevelUpPanel" unique_id=2000000063]
+offset_right = 720.0
+offset_bottom = 1280.0
+mouse_filter = 2
+color = Color(0.015, 0.015, 0.045, 0.62)
+
+[node name="LevelUpContent" type="Control" parent="UI/LevelUpPanel" unique_id=2000000064]
+offset_left = 40.0
+offset_top = 480.0
+offset_right = 680.0
+offset_bottom = 700.0
+mouse_filter = 2
+
+[node name="LevelUpLabel" type="Label" parent="UI/LevelUpPanel/LevelUpContent" unique_id=2000000061]
+offset_right = 640.0
+offset_bottom = 110.0
+text = "LEVEL UP!"
+label_settings = SubResource("LabelSettings_levelup")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelUpSubLabel" type="Label" parent="UI/LevelUpPanel/LevelUpContent" unique_id=2000000062]
+offset_top = 110.0
+offset_right = 640.0
+offset_bottom = 160.0
+text = "(Speed +1%)"
+label_settings = SubResource("LabelSettings_levelup_sub")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartPanel" type="Control" parent="UI" unique_id=2000000100]
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="StartBG" type="ColorRect" parent="UI/StartPanel" unique_id=2000000101]
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0.02, 0.02, 0.06, 1)
+
+[node name="MenuDeco" type="Control" parent="UI/StartPanel" unique_id=2000000140]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("9_menudeco")
+
+[node name="TitleLabel" type="Label" parent="UI/StartPanel" unique_id=2000000102]
+offset_left = 0.0
+offset_top = 280.0
+offset_right = 720.0
+offset_bottom = 370.0
+text = "SPECTRAFALL"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="UI/StartPanel" unique_id=2000000103]
+offset_left = 0.0
+offset_top = 380.0
+offset_right = 720.0
+offset_bottom = 420.0
+text = "PUZZLE"
+label_settings = SubResource("LabelSettings_subtitle")
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="UI/StartPanel" unique_id=2000000104]
+offset_left = 210.0
+offset_top = 520.0
+offset_right = 510.0
+offset_bottom = 600.0
+text = "START"
+theme_override_font_sizes/font_size = 32
+
+[node name="VersionLabel" type="Label" parent="UI/StartPanel" unique_id=2000000105]
+offset_left = 0.0
+offset_top = 1220.0
+offset_right = 720.0
+offset_bottom = 1260.0
+text = "v0.2 Alpha"
+label_settings = SubResource("LabelSettings_subtitle")
+horizontal_alignment = 1
+
+[node name="SettingsButton" type="Button" parent="UI/StartPanel" unique_id=2000000106]
+offset_left = 240.0
+offset_top = 620.0
+offset_right = 480.0
+offset_bottom = 680.0
+text = "SETTINGS"
+theme_override_font_sizes/font_size = 18
+
+[node name="SettingsPanel" type="Control" parent="UI" unique_id=2000000107]
+visible = false
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="SettingsBG" type="ColorRect" parent="UI/SettingsPanel" unique_id=2000000108]
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0.01, 0.01, 0.04, 0.86)
+
+[node name="SettingsBox" type="ColorRect" parent="UI/SettingsPanel" unique_id=2000000109]
+offset_left = 80.0
+offset_top = 340.0
+offset_right = 640.0
+offset_bottom = 940.0
+color = Color(0.07, 0.075, 0.135, 0.97)
+
+[node name="SettingsTitle" type="Label" parent="UI/SettingsPanel" unique_id=2000000119]
+offset_left = 80.0
+offset_top = 375.0
+offset_right = 640.0
+offset_bottom = 435.0
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="UI/SettingsPanel" unique_id=2000000128]
+offset_left = 140.0
+offset_top = 480.0
+offset_right = 420.0
+offset_bottom = 520.0
+text = "Music"
+theme_override_font_sizes/font_size = 24
+
+[node name="MusicValue" type="Label" parent="UI/SettingsPanel" unique_id=2000000129]
+offset_left = 440.0
+offset_top = 480.0
+offset_right = 580.0
+offset_bottom = 520.0
+text = "100%"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="MusicSlider" type="HSlider" parent="UI/SettingsPanel" unique_id=2000000135]
+offset_left = 140.0
+offset_top = 530.0
+offset_right = 580.0
+offset_bottom = 570.0
+max_value = 100.0
+value = 100.0
+step = 1.0
+
+[node name="SfxLabel" type="Label" parent="UI/SettingsPanel" unique_id=2000000136]
+offset_left = 140.0
+offset_top = 620.0
+offset_right = 420.0
+offset_bottom = 660.0
+text = "SFX"
+theme_override_font_sizes/font_size = 24
+
+[node name="SfxValue" type="Label" parent="UI/SettingsPanel" unique_id=2000000137]
+offset_left = 440.0
+offset_top = 620.0
+offset_right = 580.0
+offset_bottom = 660.0
+text = "100%"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="SfxSlider" type="HSlider" parent="UI/SettingsPanel" unique_id=2000000138]
+offset_left = 140.0
+offset_top = 670.0
+offset_right = 580.0
+offset_bottom = 710.0
+max_value = 100.0
+value = 100.0
+step = 1.0
+
+[node name="CloseButton" type="Button" parent="UI/SettingsPanel" unique_id=2000000139]
+offset_left = 180.0
+offset_top = 800.0
+offset_right = 540.0
+offset_bottom = 865.0
+text = "Back"
+theme_override_font_sizes/font_size = 22
+
+[node name="PausePanel" type="Control" parent="UI" unique_id=2000000120]
+visible = false
+z_index = 10
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="PauseBG" type="ColorRect" parent="UI/PausePanel" unique_id=2000000121]
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="PausePanelBG" type="ColorRect" parent="UI/PausePanel" unique_id=2000000122]
+offset_left = 110.0
+offset_top = 400.0
+offset_right = 610.0
+offset_bottom = 830.0
+color = Color(0.08, 0.08, 0.15, 0.95)
+
+[node name="PauseTitle" type="Label" parent="UI/PausePanel" unique_id=2000000123]
+offset_left = 110.0
+offset_top = 430.0
+offset_right = 610.0
+offset_bottom = 490.0
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="PauseScoreLabel" type="Label" parent="UI/PausePanel" unique_id=2000000124]
+offset_left = 110.0
+offset_top = 505.0
+offset_right = 610.0
+offset_bottom = 545.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_subtitle")
+horizontal_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="UI/PausePanel" unique_id=2000000125]
+offset_left = 180.0
+offset_top = 565.0
+offset_right = 540.0
+offset_bottom = 630.0
+text = "Continue"
+theme_override_font_sizes/font_size = 22
+
+[node name="RestartButton" type="Button" parent="UI/PausePanel" unique_id=2000000127]
+offset_left = 180.0
+offset_top = 645.0
+offset_right = 540.0
+offset_bottom = 710.0
+text = "Restart"
+theme_override_font_sizes/font_size = 22
+
+[node name="MenuButton" type="Button" parent="UI/PausePanel" unique_id=2000000126]
+offset_left = 180.0
+offset_top = 725.0
+offset_right = 540.0
+offset_bottom = 790.0
+text = "Back to Menu"
+theme_override_font_sizes/font_size = 22
+
+[node name="GameOverPanel" type="Control" parent="UI" unique_id=2000000010]
+visible = false
+z_index = 10
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="Background" type="ColorRect" parent="UI/GameOverPanel" unique_id=2000000011]
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0, 0, 0, 0.75)
+
+[node name="PanelBG" type="ColorRect" parent="UI/GameOverPanel" unique_id=2000000050]
+offset_left = 110.0
+offset_top = 350.0
+offset_right = 610.0
+offset_bottom = 820.0
+color = Color(0.08, 0.08, 0.15, 0.95)
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverPanel" unique_id=2000000012]
+offset_left = 110.0
+offset_top = 380.0
+offset_right = 610.0
+offset_bottom = 440.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="UI/GameOverPanel" unique_id=2000000013]
+offset_left = 110.0
+offset_top = 460.0
+offset_right = 610.0
+offset_bottom = 500.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_subtitle")
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="UI/GameOverPanel" unique_id=2000000051]
+offset_left = 110.0
+offset_top = 505.0
+offset_right = 610.0
+offset_bottom = 540.0
+text = "Best: 0"
+label_settings = SubResource("LabelSettings_subtitle")
+horizontal_alignment = 1
+
+[node name="ReviveButton" type="Button" parent="UI/GameOverPanel" unique_id=2000000014]
+offset_left = 180.0
+offset_top = 570.0
+offset_right = 540.0
+offset_bottom = 630.0
+text = "Revive (Watch Ad)"
+theme_override_font_sizes/font_size = 18
+
+[node name="RestartButton" type="Button" parent="UI/GameOverPanel" unique_id=2000000015]
+offset_left = 180.0
+offset_top = 650.0
+offset_right = 540.0
+offset_bottom = 710.0
+text = "Restart"
+theme_override_font_sizes/font_size = 18
+
+[node name="MenuButton" type="Button" parent="UI/GameOverPanel" unique_id=2000000052]
+offset_left = 180.0
+offset_top = 730.0
+offset_right = 540.0
+offset_bottom = 790.0
+text = "Back to Menu"
+theme_override_font_sizes/font_size = 18
+
+[node name="AdLoadingPanel" type="Control" parent="UI" unique_id=2000000130]
+visible = false
+z_index = 20
+offset_right = 720.0
+offset_bottom = 1280.0
+
+[node name="LoadBG" type="ColorRect" parent="UI/AdLoadingPanel" unique_id=2000000131]
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0, 0, 0, 0.82)
+
+[node name="LoadBox" type="ColorRect" parent="UI/AdLoadingPanel" unique_id=2000000132]
+offset_left = 210.0
+offset_top = 480.0
+offset_right = 510.0
+offset_bottom = 760.0
+color = Color(0.08, 0.08, 0.15, 0.97)
+
+[node name="Spinner" type="Control" parent="UI/AdLoadingPanel" unique_id=2000000133]
+offset_left = 310.0
+offset_top = 520.0
+offset_right = 410.0
+offset_bottom = 620.0
+script = ExtResource("6_spinner")
+
+[node name="LoadText" type="Label" parent="UI/AdLoadingPanel" unique_id=2000000134]
+offset_left = 210.0
+offset_top = 650.0
+offset_right = 510.0
+offset_bottom = 720.0
+text = "Reklam yükleniyor..."
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 20
+
+[node name="MobileControls" type="Control" parent="UI" unique_id=2000000020]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -196.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ControlsBG" type="ColorRect" parent="UI/MobileControls" unique_id=2000000060]
+offset_right = 720.0
+offset_bottom = 196.0
+color = Color(0.035, 0.038, 0.075, 0.96)
+
+[node name="TopLine" type="ColorRect" parent="UI/MobileControls" unique_id=2000000201]
+offset_right = 720.0
+offset_bottom = 2.0
+color = Color(0.45, 0.55, 0.95, 0.45)
+
+[node name="LeftButton" type="Button" parent="UI/MobileControls" unique_id=2000000021]
+offset_left = 10.0
+offset_top = 24.0
+offset_right = 142.0
+offset_bottom = 172.0
+focus_mode = 0
+text = ""
+
+[node name="Art" type="Control" parent="UI/MobileControls/LeftButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_ctlicon")
+mode = "left"
+accent = Color(0.35, 0.8, 1, 1)
+
+[node name="SoftDropButton" type="Button" parent="UI/MobileControls" unique_id=2000000025]
+offset_left = 152.0
+offset_top = 24.0
+offset_right = 284.0
+offset_bottom = 172.0
+focus_mode = 0
+text = ""
+
+[node name="Art" type="Control" parent="UI/MobileControls/SoftDropButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_ctlicon")
+mode = "down"
+accent = Color(0.45, 0.62, 1, 1)
+
+[node name="DropButton" type="Button" parent="UI/MobileControls" unique_id=2000000024]
+offset_left = 294.0
+offset_top = 24.0
+offset_right = 426.0
+offset_bottom = 172.0
+focus_mode = 0
+text = ""
+
+[node name="Art" type="Control" parent="UI/MobileControls/DropButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_ctlicon")
+mode = "drop"
+accent = Color(1, 0.62, 0.16, 1)
+
+[node name="RotateButton" type="Button" parent="UI/MobileControls" unique_id=2000000023]
+offset_left = 436.0
+offset_top = 24.0
+offset_right = 568.0
+offset_bottom = 172.0
+focus_mode = 0
+text = ""
+
+[node name="Art" type="Control" parent="UI/MobileControls/RotateButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_ctlicon")
+mode = "rotate"
+accent = Color(0.72, 0.48, 1, 1)
+
+[node name="RightButton" type="Button" parent="UI/MobileControls" unique_id=2000000022]
+offset_left = 578.0
+offset_top = 24.0
+offset_right = 710.0
+offset_bottom = 172.0
+focus_mode = 0
+text = ""
+
+[node name="Art" type="Control" parent="UI/MobileControls/RightButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_ctlicon")
+mode = "right"
+accent = Color(0.35, 0.8, 1, 1)

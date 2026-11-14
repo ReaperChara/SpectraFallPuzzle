@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://upfg4e7gxl0x"]
+
+[ext_resource type="Script" uid="uid://cn5k5ua5skx8r" path="res://ad_manager.gd" id="1_wyufq"]
+[ext_resource type="Script" uid="uid://chobbkexm5ppe" path="res://addons/AdmobPlugin/Admob.gd" id="2_22su7"]
+
+[node name="AdManager" type="Node2D" unique_id=328783184]
+script = ExtResource("1_wyufq")
+
+[node name="Admob" type="Node" parent="." unique_id=1115425973]
+script = ExtResource("2_22su7")
+is_real = true
+android_debug_application_id = "ca-app-pub-8459796290784338~9710707088"
+android_debug_banner_id = "ca-app-pub-8459796290784338/8540387804"
+android_debug_interstitial_id = "ca-app-pub-8459796290784338/6167469350"
+android_debug_rewarded_id = "ca-app-pub-8459796290784338/9200826806"
+android_real_application_id = "ca-app-pub-8459796290784338~9710707088"
+android_real_banner_id = "ca-app-pub-8459796290784338/8540387804"
+android_real_interstitial_id = "ca-app-pub-8459796290784338/6167469350"
+android_real_rewarded_id = "ca-app-pub-8459796290784338/9200826806"
+test_device_hashed_ids = Array[String](["96CAE537F029FC7D072BBC492BF97D83"])
+metadata/_custom_type_script = "uid://chobbkexm5ppe"
+
+[connection signal="banner_ad_loaded" from="Admob" to="." method="_on_admob_banner_ad_loaded"]
+[connection signal="initialization_completed" from="Admob" to="." method="_on_admob_initialization_completed"]
+[connection signal="interstitial_ad_loaded" from="Admob" to="." method="_on_admob_interstitial_ad_loaded"]
+[connection signal="rewarded_ad_loaded" from="Admob" to="." method="_on_admob_rewarded_ad_loaded"]

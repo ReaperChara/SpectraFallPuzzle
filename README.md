@@ -1,47 +1,43 @@
 # SpectraFall Puzzle
 
-Renkli blokların düştüğü, zincirleme patlamalarla skor kazanılan bir bulmaca oyunu. Godot 4 ile geliştirilmiştir. Ücretsizdir ve çevrimdışı çalışır.
+Renkli bloklar düşer, sen eşleştirirsin. Aynı renkten üç veya daha fazlasını bir araya getirip tahtayı temizle. Ama dikkat: tahta dolmadan temizlemelisin.
 
-## Özellikler
+## Nasıl oynanır
 
-- Aynı renkten 3 veya daha fazla bloğu eşleştirip temizle
-- Zincir reaksiyonlar ve artan çarpanla bonus puan
-- Dolan kombo göstergesi: dolduğunda alev topları fırlar
-- Alev topları yeni zincirleri tetikleyebilir
-- Dikey 720x1280, mobil odaklı dokunmatik kontroller
+- Blokları sürükleyip yer değiştir
+- Aynı renkten 3 veya daha fazlasını eşleştir ve patlat
+- Zincirleme patlamalar yaparak çarpanı büyüt
+- Kombo göstergesini doldur ve alev toplarını serbest bırak
+- Alev topları yeni zincirler başlatabilir
+- Kendi rekorunu kır
 
-## Teknolojiler
+## Neden oynanır
 
-- Godot 4.6 (GDScript)
-- Android (arm64-v8a + armeabi-v7a)
-
-## Derleme
-
-```bash
-./build_spectrafall.sh <sürümKodu> <sürümAdı>
-```
+- Sade ve renkli minimalist tasarım
+- Tek dokunuşla öğrenilir, ustalaşması zaman alır
+- Zincir kurma hissi ve artan kombo heyecanı
+- Reklamsız oynanabilen çevrimdışı mod
+- Her yaşa uygun
 
 ---
 
-# SpectraFall Puzzle (English)
+# SpectraFall Puzzle
 
-A colorful block-falling puzzle game where chain reactions earn you big scores. Built with Godot 4. Free to play and works offline.
+Colorful blocks fall, you match them. Bring three or more of the same color together to clear the board — before it fills up.
 
-## Features
+## How to play
 
-- Match 3 or more same-colored blocks to clear them
-- Chain reactions with multiplier scoring
-- A combo meter that fills up and launches fireballs
-- Fireballs can trigger further chain reactions
-- Portrait 720x1280, mobile-first touch controls
+- Drag and swap the blocks
+- Match 3 or more of the same color to clear them
+- Build chain reactions to grow your multiplier
+- Fill the combo meter and unleash fireballs
+- Fireballs can start even bigger chains
+- Beat your own high score
 
-## Tech
+## Why play
 
-- Godot 4.6 (GDScript)
-- Android (arm64-v8a + armeabi-v7a)
-
-## Build
-
-```bash
-./build_spectrafall.sh <versionCode> <versionName>
-```
+- Clean, colorful minimalist design
+- Easy to learn, satisfying to master
+- The thrill of chaining and rising combos
+- Fully playable offline
+- Suitable for all ages
